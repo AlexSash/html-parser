@@ -42,8 +42,7 @@ public class Parser {
     }
     
     public List<CommentUser> htmlParse() throws IOException {
-        System.setProperty(prop.getProperty("ssl"), prop.getProperty("sslPath"));
-        Document doc = Jsoup.connect(url).get();
+        Document doc = Jsoup.connect(url).validateTLSCertificates(false).get();
         Elements commentPart = doc.select(prop.getProperty("div-comments"));
         Elements content = commentPart.select(prop.getProperty("content"));
         List<CommentUser> commentUsers = new ArrayList<CommentUser>();
@@ -60,4 +59,5 @@ public class Parser {
         }
         return commentUsers;
     }
+
 }
