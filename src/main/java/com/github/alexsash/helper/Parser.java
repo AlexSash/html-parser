@@ -53,7 +53,7 @@ public class Parser {
                 Elements summary = element.select(prop.getProperty("summary"));
                 for (Element elem : summary) {
                     user.setUserName(elem.select(prop.getProperty("user")).text());
-                    user.setRating(Double.valueOf(elem.getElementsByAttributeValueStarting("class", prop.getProperty("raiting")).text()));
+                    user.setRating(Double.valueOf(elem.select(prop.getProperty("raiting")).text()));
                 }
                 user.setComment(element.select(prop.getProperty("text")).text());
                 commentUsers.add(user);                
